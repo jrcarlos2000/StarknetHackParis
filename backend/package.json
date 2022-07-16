@@ -25,6 +25,7 @@
     "solidity-coverage": "^0.7.21"
   },
   "scripts": {
-    "deploy" : "./scripts/deploy.sh"
+    "deploy" : "./scripts/deploy.sh",
+    "compile" : "./scripts/compile.sh"
   }
 }

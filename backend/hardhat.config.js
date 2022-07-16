@@ -36,7 +36,7 @@ module.exports = {
       url: "http://127.0.0.1:5050",
       dockerizedVersion: "0.2.5-arm",
       args: ["--lite-mode", "--gas-price", "2000000000"]
-    }
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

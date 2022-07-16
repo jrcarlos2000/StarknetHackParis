@@ -37,6 +37,11 @@ from contracts.utils.Ownable_base import (
     Ownable_transfer_ownership
 )
 
+# Storage Variables
+
+@storage_var
+func id_counter_storage() -> (id_counter : Uint256):
+end
 
 #
 # Constructor

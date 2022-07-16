@@ -12,7 +12,7 @@ docker-compose up
 ```
 
 ```
-npx hardhat starknet-compile
+yarn compile
 ```
 
 ```
