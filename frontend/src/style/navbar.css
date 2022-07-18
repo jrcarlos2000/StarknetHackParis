@@ -1,0 +1,33 @@
+a{
+    color: white;
+    text-decoration: none;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 13.5vw;
+    padding: 0 2vw 0 1.5vw;
+    background-color: #2E2E49;
+    color: white;
+    box-shadow: 0 10px 14px rgba(0, 0, 0, 0.344);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.logo{
+    font-size: 3vw;
+    font-weight: 600;
+    margin-top: 1vw;
+}
+.navbar-links{
+    margin-top: 6vw;
+}
+.navbar-link{
+    margin-top: 4vw;
+    font-weight: 500;
+    font-size: 1.5vw;
+}
+.link-selected{
+    color: #FF7362;
+}
