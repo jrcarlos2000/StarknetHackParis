@@ -1,0 +1,22 @@
+.first-header {
+  color: #ffffff;
+  margin-top: 7vw;
+}
+
+.second-header {
+  color: #ffffff;
+  margin-top: 2vw;
+}
+
+.user-events-container {
+  margin-top: 2vw;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nft-image {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+}
