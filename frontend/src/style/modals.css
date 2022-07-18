@@ -1,0 +1,69 @@
+.modal-dim{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background-color: #2e2e4937;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    cursor: pointer;
+}
+.modal{
+    position: absolute;
+    top: 12vw;
+    width: 40vw;
+    height: 30vw;
+    left: 36vw;
+    background-color: #2e2e49e7;
+    z-index: 100;
+    border-radius: 20px;
+    box-shadow: 4px 4px  20px rgba(0, 0, 0, 0.248);
+    cursor: auto;
+}
+.modal-title{
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 2.5vw;
+}
+.modal-description{
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 1.4vw;
+}
+.modal-image-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.
+.modal-label{
+    width: 28vw;
+}
+.modal-form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#modal-input{
+    display: flex;
+    justify-content: center;
+}
+.modal-input:focus{
+    outline: none;
+}
+.fund-modal-btn{
+    width: 15vw;
+    margin-top: 5vw;
+    background-color: transparent;
+    padding: 1vw;
+    border: 2px solid #3ace75;
+    border-radius: 10px;
+    color: white;
+    font-size: 2vw;
+    cursor: pointer;
+}
+.fund-modal-btn:hover{
+    background-color: #3ace75;
+    color: black;
+}
