@@ -16,6 +16,12 @@ const stringToFelt = (val) => {
   return starknet.shortStringToBigInt(val);
 }
 
+const increaseTime = async (timestamp) => {
+  await starknet.devnet.increaseTime(timestamp);
+  await cAccount.invoke(cVault,'dummy_invoke');
+  return
+}
+
 describe("Testing", function () {
 
   this.timeout(1000_000);
@@ -117,5 +123,48 @@ describe("Testing", function () {
       ERC721_address : BigInt(cNFT.address)
     });
   })
+
+  it("user can attend event", async function () {
+    await cAccount0.invoke(cDummyToken,'faucet');
+    await cAccount0.invoke(cDummyToken,'approve', {
+      spender : BigInt(cVault.address),
+      amount : {low: 10000n, high : 0n}
+    })
+    await cAccount0.invoke(cVault,'attend',{
+      _event_id : {low : 1n, high : 0n}
+    })
+  })
+
+  it("check in time can be set",async () => {
+    await cAccount.invoke(cVault,'open_check_in',{
+      event_id : {low : 1n, high : 0n},
+      deadline : 10000n,
+      key : stringToFelt('starknetmalaysia')
+    })
+  })
+
+  it("user cant check in with wrong key", async () => {
+
+    let error = false
+    try {
+      await cAccount0.invoke(cVault,'check_in',{
+        event_id : {low : 1n, high : 0n},
+        key : stringToFelt('starknemalaysia')
+      })
+    }catch (e){
+      error = true
+    }
+    expect(error).to.equal(true);
+  
+  })
+
+  it("user can check in", async () => {
+    await cAccount0.invoke(cVault,'check_in',{
+      event_id : {low : 1n, high : 0n},
+      key : stringToFelt('starknetmalaysia')
+    })
+  
+  })
+
 
 })
