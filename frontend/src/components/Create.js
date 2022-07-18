@@ -14,7 +14,7 @@ const Create = () => {
         event.preventDefault();
         console.log(telegram, discord, twitter, eventName, notion, checkboxSelected)
     }
-    
+
     return(
         <div>
             <Navbar page="/create" />
@@ -45,7 +45,7 @@ const Create = () => {
                             <input type="text" value={notion} onChange={(e) => setNotion(e.target.value)} className="input-field"/>
                         </div>
                         <div className="checkbox-container">
-                            <input type="checkbox" value={checkboxSelected} onChange={(e) => setCheckboxSelected(!(checkboxSelected))} className="input-field checkbox"/>
+                            <input type="checkbox" value={checkboxSelected} onChange={(e) => setCheckboxSelected(!(checkboxSelected))} className=" checkbox"/>
                             <label className="label-checkbox">I’ve submitted a right proposal format</label>
                         </div>
                         <input type="submit" className="create-btn" placeholder="Create"></input>
