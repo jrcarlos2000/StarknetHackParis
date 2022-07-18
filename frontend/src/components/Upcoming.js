@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { openModal } from "../actions";
 import "../style/events.css";
 import Navbar from "./Navbar";
 import FundModal from "../modals/FundModal";
-import SuccessModal from "../modals/SuccessModal"
+import SuccessModal from "../modals/SuccessModal";
 import upcoming from "../testData/upcoming";
 
 const Upcoming = (props) => {
 
     const navigate = useNavigate();
 
+    const attendEvent = () => {
+        navigate("/profile");
+    }
+    
     const renderUpcomingEvents = () => {
         const events = upcoming.map((event) => {
             return(
@@ -34,14 +38,6 @@ const Upcoming = (props) => {
         )
     }
 
-    const attendEvent = () => {
-        navigate("/profile");
-    }
-
-    const fundEvent = () => {
-
-    }
-
     return(
         <div className="upcoming-page">
             <Navbar page="/" />
@@ -51,10 +47,10 @@ const Upcoming = (props) => {
             <div className="page-content">
                 {renderUpcomingEvents()}
             </div>
-        </div>
-    )
-}
+    </div>
+  );
+};
 const mapStateToProps = (state) => {
-    return {openedModal: state.openModal};
-}
-export default connect(mapStateToProps, {openModal})(Upcoming);
+  return { openedModal: state.openModal };
+};
+export default connect(mapStateToProps, { openModal })(Upcoming);
