@@ -43,6 +43,7 @@ const Create = () => {
                         <div className="input-container">
                             <label className="label">Notion proposal link</label>
                             <input type="text" value={notion} onChange={(e) => setNotion(e.target.value)} className="input-field"/>
+                            <a className="how-to-link">How to write a proposal?</a>
                         </div>
                         <div className="checkbox-container">
                             <input type="checkbox" value={checkboxSelected} onChange={(e) => setCheckboxSelected(!(checkboxSelected))} className=" checkbox"/>

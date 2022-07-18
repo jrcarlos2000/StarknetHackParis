@@ -69,3 +69,9 @@ input[type="checkbox"] {
 .create-btn:hover{
     transform: scale(1.05);
 }
+.how-to-link{
+    color: #ff4d3a;
+    margin-left: 15vw;
+    margin-top: 0.5vw;
+    cursor: pointer;
+}
