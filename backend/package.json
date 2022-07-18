@@ -25,7 +25,7 @@
     "solidity-coverage": "^0.7.21"
   },
   "scripts": {
-    "deploy" : "./scripts/deploy.sh",
+    "deploy" : "npx hardhat run scripts/deploy.js",
     "compile" : "./scripts/compile.sh"
   }
 }
