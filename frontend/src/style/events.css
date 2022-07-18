@@ -54,3 +54,30 @@
     background-color: #ff5947;
     color: black;
 }
+.checkin-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.checkin-btn{
+    margin-top: 1vw;
+    width: 10vw;
+    border: 1px solid #ff5947;
+}
+.checkin-btn:hover{
+    background-color: #ff5947;
+    color: black;
+}
+.share-on-twitter{
+    width: 3vw;
+    height: 3vw;
+    margin-top: 1vw;
+    background-image: url("../images/share-img.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    margin-left: 15vw;
+    cursor: pointer;
+}

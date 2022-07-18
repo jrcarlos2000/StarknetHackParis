@@ -12,7 +12,8 @@ const FundModal = (props) => {
 
     const fund = (e) => {
         e.preventDefault();
-        console.log(fundValue)
+        console.log(fundValue);
+        props.openModal({"type": "success", "title": "Success"});
     }
 
     return(

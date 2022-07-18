@@ -10,8 +10,6 @@ import upcoming from "../testData/upcoming";
 
 const Upcoming = (props) => {
 
-    const [fundModal, setFundModal] = useState(false);
-
     const navigate = useNavigate();
 
     const renderUpcomingEvents = () => {
@@ -37,7 +35,7 @@ const Upcoming = (props) => {
     }
 
     const attendEvent = () => {
-        navigate("/profile")
+        navigate("/profile");
     }
 
     const fundEvent = () => {
@@ -48,7 +46,7 @@ const Upcoming = (props) => {
         <div className="upcoming-page">
             <Navbar page="/" />
             {(props.openedModal.type === "fund" && props.openedModal.title) && <FundModal title={props.openedModal.title}/>}
-            {/* <SuccessModal /> */}
+            {props.openedModal.type === "success" && <SuccessModal title="Success" />}
             <h1 className="page-header">Upcoming Events</h1>
             <div className="page-content">
                 {renderUpcomingEvents()}
