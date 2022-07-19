@@ -1,0 +1,189 @@
+[
+    {
+        "members": [
+            {
+                "name": "low",
+                "offset": 0,
+                "type": "felt"
+            },
+            {
+                "name": "high",
+                "offset": 1,
+                "type": "felt"
+            }
+        ],
+        "name": "Uint256",
+        "size": 2,
+        "type": "struct"
+    },
+    {
+        "members": [
+            {
+                "name": "prefix",
+                "offset": 0,
+                "type": "felt"
+            },
+            {
+                "name": "suffix",
+                "offset": 1,
+                "type": "felt"
+            },
+            {
+                "name": "owner_address",
+                "offset": 2,
+                "type": "felt"
+            },
+            {
+                "name": "stake",
+                "offset": 3,
+                "type": "Uint256"
+            },
+            {
+                "name": "n_attendees",
+                "offset": 5,
+                "type": "felt"
+            }
+        ],
+        "name": "event_core",
+        "size": 6,
+        "type": "struct"
+    },
+    {
+        "inputs": [
+            {
+                "name": "_owner",
+                "type": "felt"
+            },
+            {
+                "name": "_token_address",
+                "type": "felt"
+            }
+        ],
+        "name": "constructor",
+        "outputs": [],
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "name": "event_id",
+                "type": "Uint256"
+            }
+        ],
+        "name": "get_event",
+        "outputs": [
+            {
+                "name": "event",
+                "type": "event_core"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "get_time",
+        "outputs": [
+            {
+                "name": "timestamp",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "info_uri_prefix",
+                "type": "felt"
+            },
+            {
+                "name": "info_uri_suffix",
+                "type": "felt"
+            }
+        ],
+        "name": "register_as_host",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "_event_uri_preffix",
+                "type": "felt"
+            },
+            {
+                "name": "_event_uri_suffix",
+                "type": "felt"
+            },
+            {
+                "name": "_stake",
+                "type": "Uint256"
+            },
+            {
+                "name": "ERC721_address",
+                "type": "felt"
+            }
+        ],
+        "name": "launch_event",
+        "outputs": [
+            {
+                "name": "event_id",
+                "type": "Uint256"
+            }
+        ],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "_event_id",
+                "type": "Uint256"
+            }
+        ],
+        "name": "attend",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "event_id",
+                "type": "Uint256"
+            },
+            {
+                "name": "deadline",
+                "type": "felt"
+            },
+            {
+                "name": "key",
+                "type": "felt"
+            }
+        ],
+        "name": "open_check_in",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "event_id",
+                "type": "Uint256"
+            },
+            {
+                "name": "key",
+                "type": "felt"
+            }
+        ],
+        "name": "check_in",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "dummy_invoke",
+        "outputs": [],
+        "type": "function"
+    }
+]

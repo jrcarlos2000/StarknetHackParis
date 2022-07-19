@@ -22,12 +22,19 @@ const increaseTime = async (timestamp) => {
     return
 }
 const main = async () =>{
-    starknet.devnet.restart();
-    console.log('deploying accounts');
-    cAccount = await starknet.deployAccount('OpenZeppelin');
-    cAccount0 = await starknet.deployAccount('OpenZeppelin');
-    cAccount1 = await starknet.deployAccount('OpenZeppelin');
-    console.log('deploying contracts');
+
+    // FOR DEVELOPMENT ON DEVNET
+    // starknet.devnet.restart();
+    // console.log('deploying accounts');
+    // cAccount = await starknet.deployAccount('OpenZeppelin');
+    // cAccount0 = await starknet.deployAccount('OpenZeppelin');
+    // cAccount1 = await starknet.deployAccount('OpenZeppelin');
+    // console.log('deploying contracts');
+
+    // // FOR DEVELOPMENT ON GOERLI
+    cAccount = {
+        address : '0x109c853fd77027361048f9ec6d54e1f5b9001f28891bf1517ba49e4f6b8309b'
+    }
 
     const cfDummyToken = await starknet.getContractFactory('dummy_token');
     cDummyToken = await cfDummyToken.deploy({
@@ -36,20 +43,22 @@ const main = async () =>{
     initial_supply : {low : 0n , high : 100000000000000000000n}, 
     recipient : BigInt (cAccount.address)
     });
+    console.log('deployed dummy token')
     const cfVault = await starknet.getContractFactory('Vault');
     cVault = await cfVault.deploy({
     _owner : BigInt(cAccount.address),
     _token_address : BigInt(cDummyToken.address)
     });
-
+    console.log('deployed vault')
     const cfNFt = await starknet.getContractFactory('ERC721X');
     cNFT = await cfNFt.deploy({
       name : stringToFelt('Meetup in London'),
-      vault : BigInt(cAccount.address), // here owner is the account but must change to vault
+      vault : BigInt(cVault.address), // here owner is the account but must change to vault
       creator : BigInt(cAccount.address),
       base_token_uri : [stringToFelt('emerson'), stringToFelt('ramos')],
       token_uri_suffix : stringToFelt('none')
     })
+    console.log('deployed NFT')
 
     const contract_addresses = {
 
@@ -57,6 +66,7 @@ const main = async () =>{
         Vault : cVault.address,
         cNFT : cNFT.address
     }
+
     console.log(contract_addresses);
 }
 
