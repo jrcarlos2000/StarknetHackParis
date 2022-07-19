@@ -44,7 +44,7 @@ const Create = () => {
         const nftaddr = '0x010f6e7d81a4edf96411a02543ce7a3254f6ca1b0956aaa67dfcf916309a2950'
 
         invoke({
-          args: [prefix, suffix,stake,nftaddr],
+          args: [prefix, suffix, stake, nftaddr],
           metadata: { method: 'launch_event', message },
         });
       }
