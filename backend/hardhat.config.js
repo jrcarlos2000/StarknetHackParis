@@ -26,7 +26,7 @@ module.exports = {
   solidity: "0.8.4",
   starknet : {
     dockerizedVersion : '0.9.0-arm',
-    network : "devnet"
+    network : "alpha-goerli"
   },
   networks: {
     devnet: {
