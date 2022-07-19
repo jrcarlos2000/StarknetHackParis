@@ -1,45 +1,47 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo } from "react";
 import {
   useStarknet,
   useStarknetInvoke,
   useStarknetCall,
-} from '@starknet-react/core';
-import { useVaultContract, useDummyTokenContract } from '../hooks/contracts.ts';
-import { toBN } from 'starknet/dist/utils/number';
-import { bnToUint256, uint256ToBN } from 'starknet/dist/utils/uint256';
-import Navbar from './Navbar';
-import '../style/create.css';
-import '../style/host.css';
+} from "@starknet-react/core";
+import { useVaultContract, useDummyTokenContract } from "../hooks/contracts.ts";
+import { toBN } from "starknet/dist/utils/number";
+import { bnToUint256, uint256ToBN } from "starknet/dist/utils/uint256";
+import Navbar from "./Navbar";
+import "../style/create.css";
+import "../style/host.css";
+import { create } from "ipfs-http-client";
+
+const url = "https://ipfs.infura.io:5001/api/v0";
+const client = create(url);
 
 const HostForm = () => {
-  const [telegram, setTelegram] = useState('');
-  const [fileName, setFileName] = useState('');
-  const [file, setFile] = useState('');
+  const [telegram, setTelegram] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState("");
   const { account } = useStarknet();
   const { contract } = useVaultContract();
+  const [imageIPFS, setImageIPFS] = useState("");
 
   const { loading, error, reset, invoke } = useStarknetInvoke({
     contract,
-    method: 'register_as_host',
+    method: "register_as_host",
   });
 
   const onCreateHost = useCallback(
     (event) => {
-      event.preventDefault();
-      
-
+      //   event.preventDefault();
       reset();
-
-      console.log('account', account);
+      console.log("account", account);
 
       if (account) {
         const message = `Registering host => ${account}`;
-        const prefix = '88314279774552';
-        const suffix = '91625716336984';
+        const prefix = "88314279774552";
+        const suffix = "91625716336984";
 
         invoke({
           args: [prefix, suffix],
-          metadata: { method: 'register_as_host', message },
+          metadata: { method: "register_as_host", message },
         });
       }
     },
@@ -49,18 +51,40 @@ const HostForm = () => {
   const buttonClicked = async (event) => {
     event.preventDefault();
     console.log(telegram, file, fileName);
-    onCreateHost(event);
-  }
+    const hostData = {
+      telegram: telegram,
+      imageIPFS: imageIPFS,
+    };
+    console.log("host data: ", hostData);
+    const { cid } = await client.add({ content: JSON.stringify(hostData) });
+    const url = `https://ipfs.infura.io/ipfs/${cid}`;
+    console.log("url:", url);
+    onCreateHost(url);
+  };
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setFile(event.target.files[0]);
     setFileName(event.target.files[0].name);
+    try {
+      const { cid } = await client.add(
+        { content: file },
+        {
+          cidVersion: 1,
+          hashAlg: "sha3-224",
+        }
+      );
+      const url = `https://ipfs.infura.io/ipfs/${cid}`;
+      console.log("url: ", url);
+      setImageIPFS(url);
+    } catch (err) {
+      console.error("Error uploading file: ", err);
+    }
   };
 
   const drop = useCallback((node) => {
     if (node !== null) {
-      node.addEventListener('dragover', handleDragOver);
-      node.addEventListener('drop', handleDrop);
+      node.addEventListener("dragover", handleDragOver);
+      node.addEventListener("drop", handleDrop);
     }
   });
 
@@ -135,7 +159,7 @@ function UserDummyBalance() {
 
   const { data, loading, error } = useStarknetCall({
     contract,
-    method: 'balanceOf',
+    method: "balanceOf",
     args: account ? [account] : undefined,
   });
 
