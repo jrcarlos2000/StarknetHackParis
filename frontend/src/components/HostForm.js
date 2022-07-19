@@ -11,6 +11,7 @@ import Navbar from "./Navbar";
 import "../style/create.css";
 import "../style/host.css";
 import { create } from "ipfs-http-client";
+import { encodeShortString } from "starknet/dist/utils/shortString";
 
 const url = "https://ipfs.infura.io:5001/api/v0";
 const client = create(url);
@@ -30,14 +31,17 @@ const HostForm = () => {
 
   const onCreateHost = useCallback(
     (event) => {
-      //   event.preventDefault();
+        console.log(event)
+        const len = event.length;
+        const cid1 = event.substring(0,len/2);
+        const cid2 = event.substring(len/2,len);
       reset();
       console.log("account", account);
 
       if (account) {
         const message = `Registering host => ${account}`;
-        const prefix = "88314279774552";
-        const suffix = "91625716336984";
+        const prefix = encodeShortString(cid1);
+        const suffix = encodeShortString(cid2);
 
         invoke({
           args: [prefix, suffix],
@@ -57,7 +61,7 @@ const HostForm = () => {
     };
     console.log("host data: ", hostData);
     const { cid } = await client.add({ content: JSON.stringify(hostData) });
-    const url = `https://ipfs.infura.io/ipfs/${cid}`;
+    const url = `${cid}`;
     console.log("url:", url);
     onCreateHost(url);
   };
