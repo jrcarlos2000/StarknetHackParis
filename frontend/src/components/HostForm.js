@@ -11,8 +11,8 @@ import Navbar from "./Navbar";
 import "../style/create.css";
 import "../style/host.css";
 import { create } from "ipfs-http-client";
-import ConnectWallet from "./Wallet/Connect";
 import { encodeShortString } from "starknet/dist/utils/shortString";
+
 const url = "https://ipfs.infura.io:5001/api/v0";
 const client = create(url);
 
@@ -36,7 +36,7 @@ const HostForm = () => {
         const cid1 = event.substring(0,len/2);
         const cid2 = event.substring(len/2,len);
       reset();
-      console.log("account", account);
+    //   console.log("account", account);
 
       if (account) {
         const message = `Registering host => ${account}`;
@@ -109,7 +109,6 @@ const HostForm = () => {
   return (
     <div>
       <Navbar page="/become-a-host" />
-      <ConnectWallet></ConnectWallet>
       <div className="page-content">
         <h1 className="page-header">Become a Host</h1>
         <form className="create-form host-form" onSubmit={buttonClicked}>
