@@ -14,7 +14,7 @@ const PastEvents = () => {
         const events = upcoming.map((event) => {
             return(
                 <div className="event-container">
-                    <h2 className="event-header">{event.title}</h2>
+                    <a className="event-header" href={event.link}>{event.title}</a>
                     <div className="event-description">
                         {event.description} 
                     </div>
