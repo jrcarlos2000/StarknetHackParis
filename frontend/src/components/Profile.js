@@ -4,14 +4,18 @@ import attendedEvents from "../testData/attended";
 import attendedTokens from "../testData/attendedTokens";
 import "../style/profile.css";
 import "../style/events.css";
+import { connect } from "react-redux";
+import { openModal } from "../actions";
+import AttendanceModal from "../modals/AttendanceModal";
+import SuccessModal from "../modals/SuccessModal";
 
-const Profile = () => {
+const Profile = (props) => {
   const renderAttendedEvents = attendedEvents.map((event) => (
     <div className="event-container">
       <h2 className="event-header">{event.title}</h2>
       <div className="event-description">{event.description}</div>
       <div className="event-buttons">
-        <button className="event-button fund-btn">Call Attendance</button>
+        <button onClick={() => props.openModal({"type": "attendance", "title": event.title})} className="event-button fund-btn">Call Attendance</button>
         <button className="event-button attend-btn">Close</button>
       </div>
     </div>
@@ -28,6 +32,8 @@ const Profile = () => {
 
   return (
     <div>
+        {(props.openedModal.type === "attendance" && props.openedModal.title) && <AttendanceModal title={props.openedModal.title}/>}
+        {props.openedModal.type === "success" && <SuccessModal title="Success" />}
       <Navbar page="/profile" />
       <h1 className="page-header">Your Profile</h1>
       <div className="page-content">
@@ -44,4 +50,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return { openedModal: state.openModal };
+  };
+  export default connect(mapStateToProps, { openModal })(Profile);

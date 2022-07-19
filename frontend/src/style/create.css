@@ -65,7 +65,7 @@
 }
 input[type="checkbox"] {
     accent-color: #ff4d3a;
-    }
+}
 .create-btn:hover{
     transform: scale(1.05);
 }
