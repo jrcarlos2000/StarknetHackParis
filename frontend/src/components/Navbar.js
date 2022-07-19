@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../style/navbar.css';
+import ConnectWallet from './Wallet/Connect';
 
 const Navbar = (props) => {
   return (
@@ -12,6 +13,9 @@ const Navbar = (props) => {
         <Link to="/">
           <div className="logo desktop">STARCOM</div>
         </Link>
+
+        <ConnectWallet></ConnectWallet>
+
         <div className="navbar-links">
           {props.page === '/create' ? (
             <Link to="/create">
