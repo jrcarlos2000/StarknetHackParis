@@ -26,13 +26,9 @@ const Create = () => {
     const blob = new Blob([JSON.stringify(eventData)], {
       type: "application/json",
     });
-
     const file = [new File([blob], "event.json")];
     const cid = await client.put(file);
-    console.log("stored files with cid:", cid);
-
-    const data = await fetch(cid + ".ipfs.dweb.link");
-    console.log("data", data);
+    return `https://ipfs.io/ipfs/${cid}`;
   };
 
   return (
