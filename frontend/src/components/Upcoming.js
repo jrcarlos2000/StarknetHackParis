@@ -20,7 +20,7 @@ const Upcoming = (props) => {
   const renderUpcomingEvents = () => {
     const events = upcoming.map((event) => {
       return (
-        <div className="event-container">
+        <a className="event-container" href={event.link}>
           <h2 className="event-header">{event.title}</h2>
           <div className="event-description">{event.description}</div>
           <div className="event-buttons">
@@ -41,7 +41,7 @@ const Upcoming = (props) => {
               Attend
             </button>
           </div>
-        </div>
+        </a>
       );
     });
     return <div className="events-container">{events}</div>;
