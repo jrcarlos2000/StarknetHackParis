@@ -9,7 +9,7 @@ export function useDummyTokenContract() {
   return useContract({
     abi: DummyTokenAbi as Abi,
     address:
-      '0x00bf60057d43d218c87c38dbedb69ab9762cab17961645f84f172f078a1326f9',
+      '0x00b0b58b110e22f06f1427414f508c1c424fa2535cb3b6ee187c77f1646030c4',
   });
 }
 
@@ -17,7 +17,7 @@ export function useVaultContract() {
   return useContract({
     abi: VaultAbi as Abi,
     address:
-      '0x047d1f51b6fd8e6019e42b51c5b265480c197cd4bda7b0fcc7ee0b39ac845d79',
+      '0x03f02c98e4f452fe3d1734ecb754e2f6899fe735df6ad115af5ddce94a63c799',
   });
 }
 
@@ -25,6 +25,6 @@ export function useNFTContract() {
   return useContract({
     abi: ERC721XAbi as Abi,
     address:
-      '0x010f6e7d81a4edf96411a02543ce7a3254f6ca1b0956aaa67dfcf916309a2950',
+      '0x03c16ee9c4ae82a6cff7ea7569d2fe73d21bbff303e3c88bdb7e9dd289dbd0cb',
   });
 }

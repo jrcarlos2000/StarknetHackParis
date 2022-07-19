@@ -71,7 +71,7 @@ const HostForm = () => {
     setFileName(event.target.files[0].name);
     try {
       const { cid } = await client.add(
-        { content: file },
+        { content: event.target.files[0] },
         {
           cidVersion: 1,
           hashAlg: "sha3-224",

@@ -33,7 +33,7 @@ const main = async () =>{
 
     // // FOR DEVELOPMENT ON GOERLI
     cAccount = {
-        address : '0x07DEc0Bb796C9Cfa1524344bD2D2749741Bb1c0A5b2a598D8a0AD70f5928c54E'
+        address : '0x4bc45b5950f71e1d422ded1be0497a354aa3ece00bc44e74a424ed5b41b8f37'
     }
 
     const cfDummyToken = await starknet.getContractFactory('dummy_token');
