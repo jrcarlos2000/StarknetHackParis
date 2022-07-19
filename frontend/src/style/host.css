@@ -1,0 +1,44 @@
+.host-form{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 60vw;
+}
+.dropzone{
+    width: 40vw;
+    margin-top: 0.5vw;
+    height: 17vw;
+    border: 2px dashed #ff4d3a;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dropzone-content{
+    width: 20vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.file-title{
+    width: 100%;
+    text-align: center;
+}
+.file-input{
+    margin-left: 4vw;
+    margin-top: 2vw;
+}
+.file-img{
+    height: 5vw;
+    width: 5vw;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 2vw;
+}
+.white-img{
+    background-image: url("../images/img.png");
+}
+.gray-img{
+    background-image: url("../images/img-gray.png");
+}
