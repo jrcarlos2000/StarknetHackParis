@@ -1,89 +1,66 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from 'react';
 import {
   useStarknet,
   useStarknetInvoke,
   useStarknetCall,
-} from "@starknet-react/core";
-import { useVaultContract, useDummyTokenContract } from "../hooks/contracts.ts";
-import { toBN } from "starknet/dist/utils/number";
-import { bnToUint256, uint256ToBN } from "starknet/dist/utils/uint256";
-import Navbar from "./Navbar";
-import "../style/create.css";
-import "../style/host.css";
-import { create } from "ipfs-http-client";
-
-const url = "https://ipfs.infura.io:5001/api/v0";
-const client = create(url);
+} from '@starknet-react/core';
+import { useVaultContract, useDummyTokenContract } from '../hooks/contracts.ts';
+import { toBN } from 'starknet/dist/utils/number';
+import { bnToUint256, uint256ToBN } from 'starknet/dist/utils/uint256';
+import Navbar from './Navbar';
+import '../style/create.css';
+import '../style/host.css';
 
 const HostForm = () => {
-  const [telegram, setTelegram] = useState("");
-  const [fileName, setFileName] = useState("");
-  const [file, setFile] = useState("");
-  const [enabled, setEnabled] = useState(false);
-  const [imageIPFS, setImageIPFS] = useState("");
+  const [telegram, setTelegram] = useState('');
+  const [fileName, setFileName] = useState('');
+  const [file, setFile] = useState('');
   const { account } = useStarknet();
   const { contract } = useVaultContract();
 
   const { loading, error, reset, invoke } = useStarknetInvoke({
     contract,
-    method: "register_as_host",
+    method: 'register_as_host',
   });
 
   const onCreateHost = useCallback(
-    async (event) => {
+    (event) => {
       event.preventDefault();
-      console.log(telegram, file, fileName);
-      const hostData = {
-        telegram: telegram,
-        imageIPFS: imageIPFS,
-      };
-      const { cid } = await client.add({ content: JSON.stringify(hostData) });
-      const url = `https://ipfs.infura.io/ipfs/${cid}`;
-      console.log("url:", url);
+      
 
       reset();
 
-      console.log("account", account);
+      console.log('account', account);
 
       if (account) {
         const message = `Registering host => ${account}`;
-        const prefix = "88314279774552";
-        const suffix = "91625716336984";
+        const prefix = '88314279774552';
+        const suffix = '91625716336984';
 
         invoke({
           args: [prefix, suffix],
-          metadata: { method: "register_as_host", message },
+          metadata: { method: 'register_as_host', message },
         });
       }
     },
     [account, invoke, reset]
   );
 
-  const handleChange = async (event) => {
+  const buttonClicked = async (event) => {
+    event.preventDefault();
+    console.log(telegram, file, fileName);
+    onCreateHost(event);
+  }
+
+  const handleChange = (event) => {
     setFile(event.target.files[0]);
     setFileName(event.target.files[0].name);
-    const file = event.target.files[0];
-    try {
-      const { cid } = await client.add(
-        { content: file },
-        {
-          cidVersion: 1,
-          hashAlg: "sha3-224",
-        }
-      );
-      const url = `https://ipfs.infura.io/ipfs/${cid}`;
-      console.log("url: ", url);
-      setImageIPFS(url);
-      setEnabled(true);
-    } catch (err) {
-      console.error("Error uploading file: ", err);
-    }
   };
 
   const drop = useCallback((node) => {
     if (node !== null) {
-      node.addEventListener("dragover", handleDragOver);
-      node.addEventListener("drop", handleDrop);
+      node.addEventListener('dragover', handleDragOver);
+      node.addEventListener('drop', handleDrop);
     }
   });
 
@@ -106,8 +83,7 @@ const HostForm = () => {
       <Navbar page="/become-a-host" />
       <div className="page-content">
         <h1 className="page-header">Become a Host</h1>
-
-        <form className="create-form host-form" onSubmit={onCreateHost}>
+        <form className="create-form host-form" onSubmit={buttonClicked}>
           <div className="input-container">
             <label className="label">Your Telegram</label>
             <input
@@ -131,26 +107,21 @@ const HostForm = () => {
                     onChange={handleChange}
                     type="file"
                     className="file-input"
-                  />
+                  ></input>
                 )}
               </div>
             </div>
           </div>
-        </form>
-
-        {enabled ? (
-          <input type="submit" className="create-btn" placeholder="Create" />
-        ) : (
           <input
             type="submit"
             className="create-btn"
             placeholder="Create"
-            disabled
-          />
-        )}
+          ></input>
+        </form>
+
         <div>
           <UserDummyBalance></UserDummyBalance>
-          {/* <button onClick={onCreateHost}>Create Host</button> */}
+          <button onClick={onCreateHost}>Create Host</button>
           {error && <p>Error: {error}</p>}
         </div>
       </div>
@@ -164,7 +135,7 @@ function UserDummyBalance() {
 
   const { data, loading, error } = useStarknetCall({
     contract,
-    method: "balanceOf",
+    method: 'balanceOf',
     args: account ? [account] : undefined,
   });
 
