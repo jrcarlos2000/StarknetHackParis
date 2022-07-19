@@ -93,14 +93,14 @@
     margin-top: 3vw;
     background-color: transparent;
     padding: 1vw;
-    border: 2px solid #ff4d3a;
+    border: 2px solid #FF4D58;
     border-radius: 10px;
     color: white;
     font-size: 2vw;
     cursor: pointer;
 }
 .checkin-modal-btn:hover{
-    background-color: #ff4d3a;
+    background-color: #FF4D58;
     color: black;
 }
 .checkin-input{

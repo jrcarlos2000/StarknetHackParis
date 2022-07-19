@@ -32,7 +32,7 @@
     padding-left: 1vw;
 }
 .input-field:focus{
-    outline: #ff4d3a 2px solid;
+    outline: #FF4D58 2px solid;
 }
 .checkbox-container{
     margin-top: 4vw;
@@ -54,7 +54,7 @@
 .create-btn{
     width: 20vw;
     height: 4vw;
-    background-color: #ff4d3a;
+    background-color: #FF4D58;
     color: white;
     border: none;
     border-radius: 15px;
@@ -64,13 +64,13 @@
     cursor: pointer;
 }
 input[type="checkbox"] {
-    accent-color: #ff4d3a;
+    accent-color: #FF4D58;
 }
 .create-btn:hover{
     transform: scale(1.05);
 }
 .how-to-link{
-    color: #ff4d3a;
+    color: #FF4D58;
     margin-left: 15vw;
     margin-top: 0.5vw;
     cursor: pointer;

@@ -48,10 +48,10 @@
     color: black;
 }
 .attend-btn{
-    border: 1px solid #ff5947;
+    border: 1px solid #FF4D58;
 }
 .attend-btn:hover{
-    background-color: #ff5947;
+    background-color: #FF4D58;
     color: black;
 }
 .checkin-container{
@@ -62,10 +62,10 @@
 .checkin-btn{
     margin-top: 1vw;
     width: 10vw;
-    border: 1px solid #ff5947;
+    border: 1px solid #FF4D58;
 }
 .checkin-btn:hover{
-    background-color: #ff5947;
+    background-color: #FF4D58;
     color: black;
 }
 .share-on-twitter{
