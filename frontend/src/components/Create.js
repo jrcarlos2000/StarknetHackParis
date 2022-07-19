@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import Navbar from "./Navbar";
 import "../style/create.css";
 import { Web3Storage } from "web3.storage";
-
+import {
+    useStarknet,
+    useStarknetInvoke,
+    useStarknetCall,
+  } from '@starknet-react/core';
+import { useVaultContract, useDummyTokenContract } from '../hooks/contracts.ts';
+import { bnToUint256, uint256ToBN } from "starknet/dist/utils/uint256";
+import { encodeShortString } from "starknet/dist/utils/shortString";
 const Create = () => {
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
@@ -11,7 +18,38 @@ const Create = () => {
   const [notion, setNotion] = useState("");
   const [checkboxSelected, setCheckboxSelected] = useState(false);
 
+  const { account } = useStarknet();
+  const { contract } = useVaultContract();
+
+  const { loading, error, reset, invoke } = useStarknetInvoke({
+    contract,
+    method: 'launch_event',
+  });
+
   const client = new Web3Storage({ token: process.env.REACT_APP_API_TOKEN });
+
+  const onCreateHost = useCallback(
+    (event) => {
+    console.log(event)
+    const len = event.length;
+    const cid1 = event.substring(0,len/2);
+    const cid2 = event.substring(len/2,len);
+    reset();
+      if (account) {
+        const message = `Registering host => ${account}`;
+        const prefix = encodeShortString(cid1);
+        const suffix = encodeShortString(cid2);
+        const stake = bnToUint256('100000');
+        const nftaddr = '0x034cce1fc5795e6f5cb894f1f9f87b744d91233b81d662371fe52506a397714f'
+
+        invoke({
+          args: [prefix, suffix,stake,nftaddr],
+          metadata: { method: 'launch_event', message },
+        });
+      }
+    },
+    [account, invoke, reset]
+  );
 
   const createEvent = async (event) => {
     event.preventDefault();
@@ -33,6 +71,7 @@ const Create = () => {
 
     const data = await fetch(cid + ".ipfs.dweb.link");
     console.log("data", data);
+    onCreateHost(cid);
   };
 
   return (

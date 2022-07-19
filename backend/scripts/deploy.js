@@ -23,7 +23,7 @@ const increaseTime = async (timestamp) => {
 }
 const main = async () =>{
 
-    // FOR DEVELOPMENT ON DEVNET
+    // // FOR DEVELOPMENT ON DEVNET
     // starknet.devnet.restart();
     // console.log('deploying accounts');
     // cAccount = await starknet.deployAccount('OpenZeppelin');
@@ -33,7 +33,7 @@ const main = async () =>{
 
     // // FOR DEVELOPMENT ON GOERLI
     cAccount = {
-        address : '0x109c853fd77027361048f9ec6d54e1f5b9001f28891bf1517ba49e4f6b8309b'
+        address : '0x07DEc0Bb796C9Cfa1524344bD2D2749741Bb1c0A5b2a598D8a0AD70f5928c54E'
     }
 
     const cfDummyToken = await starknet.getContractFactory('dummy_token');

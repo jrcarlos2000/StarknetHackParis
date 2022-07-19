@@ -115,7 +115,7 @@ const HostForm = () => {
 
         <div>
           <UserDummyBalance></UserDummyBalance>
-          <button onClick={onCreateHost}>Create Host</button>
+          {/* <button onClick={onCreateHost}>Create Host</button> */}
           {error && <p>Error: {error}</p>}
         </div>
       </div>
