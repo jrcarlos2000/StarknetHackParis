@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { openModal } from "../actions";
 import AttendanceModal from "../modals/AttendanceModal";
 import SuccessModal from "../modals/SuccessModal";
+import ConnectWallet from "./Wallet/Connect";
 
 const Profile = (props) => {
   const renderAttendedEvents = attendedEvents.map((event) => (
@@ -44,6 +45,7 @@ const Profile = (props) => {
       )}
       {props.openedModal.type === "success" && <SuccessModal title="Success" />}
       <Navbar page="/profile" />
+      <ConnectWallet></ConnectWallet>
       <h1 className="page-header">Your Profile</h1>
       <div className="page-content">
         <div>

@@ -14,8 +14,6 @@ const Navbar = (props) => {
           <div className="logo desktop">STARCOM</div>
         </Link>
 
-        <ConnectWallet></ConnectWallet>
-
         <div className="navbar-links">
           {props.page === '/create' ? (
             <Link to="/create">

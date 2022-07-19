@@ -11,7 +11,7 @@ import Navbar from "./Navbar";
 import "../style/create.css";
 import "../style/host.css";
 import { create } from "ipfs-http-client";
-
+import ConnectWallet from "./Wallet/Connect";
 const url = "https://ipfs.infura.io:5001/api/v0";
 const client = create(url);
 
@@ -104,6 +104,7 @@ const HostForm = () => {
   return (
     <div>
       <Navbar page="/become-a-host" />
+      <ConnectWallet></ConnectWallet>
       <div className="page-content">
         <h1 className="page-header">Become a Host</h1>
 

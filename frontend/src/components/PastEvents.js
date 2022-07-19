@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "./Navbar";
 import upcoming from "../testData/upcoming";
+import ConnectWallet from "./Wallet/Connect";
 import "../style/events.css"
 
 const PastEvents = () => {
@@ -8,7 +9,7 @@ const PastEvents = () => {
     const shareOnTwitter = () =>  {
         console.log("share");
     }
-    
+
     const renderEvents = (props) => {
         const events = upcoming.map((event) => {
             return(
@@ -31,6 +32,7 @@ const PastEvents = () => {
     return(
         <div>
             <Navbar page="/past-events" />
+            <ConnectWallet></ConnectWallet>
             <h1 className="page-header">Explore Past Events</h1>
             <div className="page-content">
                 {renderEvents()}

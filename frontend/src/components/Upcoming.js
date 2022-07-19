@@ -8,6 +8,7 @@ import FundModal from "../modals/FundModal";
 import SuccessModal from "../modals/SuccessModal";
 import StakeModal from "../modals/StakeModal";
 import upcoming from "../testData/upcoming";
+import ConnectWallet from "./Wallet/Connect";
 
 const Upcoming = (props) => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const Upcoming = (props) => {
   return (
     <div className="upcoming-page">
       <Navbar page="/upcoming" />
+      <ConnectWallet></ConnectWallet>
       {props.openedModal.type === "fund" && props.openedModal.title && (
         <FundModal title={props.openedModal.title} />
       )}

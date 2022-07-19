@@ -4,6 +4,7 @@ import upcoming from "../testData/upcoming";
 import "../style/events.css"
 import CheckinModal from "../modals/CheckinModal";
 import SuccessModal from "../modals/SuccessModal"
+import ConnectWallet from "./Wallet/Connect";
 import { openModal } from "../actions";
 import { connect } from "react-redux";
 
@@ -33,6 +34,7 @@ const Checkin = (props) => {
     return(
         <div>
             <Navbar page="/checkin" />
+            <ConnectWallet></ConnectWallet>
             {props.openedModal.type === "checkin" && <CheckinModal title={props.openedModal.title}/>}
             {props.openedModal.type === "success" && <SuccessModal title="Success" />}
             <div className="page-content">

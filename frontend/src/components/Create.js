@@ -10,6 +10,7 @@ import {
 import { useVaultContract, useDummyTokenContract } from '../hooks/contracts.ts';
 import { bnToUint256, uint256ToBN } from "starknet/dist/utils/uint256";
 import { encodeShortString } from "starknet/dist/utils/shortString";
+import ConnectWallet from "./Wallet/Connect";
 const Create = () => {
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
@@ -77,6 +78,7 @@ const Create = () => {
   return (
     <div>
       <Navbar page="/create" />
+      <ConnectWallet></ConnectWallet>
       <div className="page-content">
         <h1 className="page-header">Create New Event</h1>
         <form className="create-form" onSubmit={createEvent}>

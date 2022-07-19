@@ -1,0 +1,24 @@
+.connect-btn{
+    position: absolute;
+    top: 1.5vw;
+    right: 3vw;
+    padding: 0.7vw 2vw 0.7vw 2vw;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    background-color: #FF4D58;
+    color: white;
+    cursor: pointer;
+}
+.account-details{
+    position: absolute;
+    right: 3vw;
+    top: 2vw;
+    text-align: right;
+}
+.disconnect-btn{
+    position: relative;
+    margin-left: 2vw;
+    top: 1vw;
+    right: 0;
+}
