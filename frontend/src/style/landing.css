@@ -18,10 +18,26 @@
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.253);
     transition: all 0.5s ease;
     cursor: pointer;
-    background-color: #ff4d3a;
+    background-color: #FF4D58;
     font-weight: 700;
 }
 .launch-btn:hover{
+    transform: scale(1.05);
+}
+.launch-main-btn{
+    margin-top: 4vw;
+    width: 20vw;
+    height: 5vw;
+    font-size: 1.8vw;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.253);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    background-color: #FF4D58;
+    font-weight: 700;
+}
+.launch-main-btn:hover{
     transform: scale(1.05);
 }
 .background{
@@ -36,17 +52,25 @@
     background-repeat: no-repeat;
 }
 .landing-container{
-    width: 60vw;
-    height: 30vw;
-    top: 15vw;
-    left: 20vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 65vw;
+    height: 35vw;
+    top: 12vw;
+    left: 17.5vw;
     border-radius: 20px;
     z-index: 100;
     background-color: #1c1c3b;
     position: absolute;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.265);
+    background-image: url("../images/community.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .landing-header{
+    max-width: 50vw;
     font-weight: 900;
     font-size: 3vw;
     text-align: center;

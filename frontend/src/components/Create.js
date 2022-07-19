@@ -40,7 +40,7 @@ const Create = () => {
         const prefix = encodeShortString(cid1);
         const suffix = encodeShortString(cid2);
         const stake = bnToUint256('100000');
-        const nftaddr = '0x034cce1fc5795e6f5cb894f1f9f87b744d91233b81d662371fe52506a397714f'
+        const nftaddr = '0x010f6e7d81a4edf96411a02543ce7a3254f6ca1b0956aaa67dfcf916309a2950'
 
         invoke({
           args: [prefix, suffix,stake,nftaddr],

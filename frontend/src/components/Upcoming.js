@@ -10,45 +10,54 @@ import StakeModal from "../modals/StakeModal";
 import upcoming from "../testData/upcoming";
 
 const Upcoming = (props) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const attendEvent = () => {
+    navigate("/profile");
+  };
 
-    const attendEvent = () => {
-        navigate("/profile");
-    }
+  const renderUpcomingEvents = () => {
+    const events = upcoming.map((event) => {
+      return (
+        <div className="event-container">
+          <h2 className="event-header">{event.title}</h2>
+          <div className="event-description">{event.description}</div>
+          <div className="event-buttons">
+            <button
+              onClick={() =>
+                props.openModal({ type: "fund", title: event.title })
+              }
+              className="event-button fund-btn"
+            >
+              Fund
+            </button>
+            <button
+              onClick={() =>
+                props.openModal({ type: "stake", title: event.title })
+              }
+              className="event-button attend-btn"
+            >
+              Attend
+            </button>
+          </div>
+        </div>
+      );
+    });
+    return <div className="events-container">{events}</div>;
+  };
 
-    const renderUpcomingEvents = () => {
-        const events = upcoming.map((event) => {
-            return(
-                <div className="event-container">
-                    <h2 className="event-header">{event.title}</h2>
-                    <div className="event-description">
-                        {event.description} 
-                    </div>
-                    <div className="event-buttons">
-                        <button onClick={() => props.openModal({"type": "fund", "title": event.title})} className="event-button fund-btn">Fund</button>
-                        <button onClick={()=> props.openModal({"type": "stake", "title": event.title})} className="event-button attend-btn">Attend</button>
-                    </div>
-                </div>
-            )
-        })
-        return(
-            <div className="events-container">
-                {events}
-            </div>
-        )
-    }
-
-    return(
-        <div className="upcoming-page">
-            <Navbar page="/upcoming" />
-            {(props.openedModal.type === "fund" && props.openedModal.title) && <FundModal title={props.openedModal.title}/>}
-            {(props.openedModal.type === "stake" && props.openedModal.title) && <StakeModal title={props.openedModal.title}/>}
-            {props.openedModal.type === "success" && <SuccessModal title="Success" />}
-            <h1 className="page-header">Upcoming Events</h1>
-            <div className="page-content">
-                {renderUpcomingEvents()}
-            </div>
+  return (
+    <div className="upcoming-page">
+      <Navbar page="/upcoming" />
+      {props.openedModal.type === "fund" && props.openedModal.title && (
+        <FundModal title={props.openedModal.title} />
+      )}
+      {props.openedModal.type === "stake" && props.openedModal.title && (
+        <StakeModal title={props.openedModal.title} />
+      )}
+      {props.openedModal.type === "success" && <SuccessModal title="Success" />}
+      <h1 className="page-header">Upcoming Events</h1>
+      <div className="page-content">{renderUpcomingEvents()}</div>
     </div>
   );
 };
